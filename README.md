@@ -1,0 +1,19 @@
+Per la prima parte dell'assignment per avere una corretta visualizzazione del mio operato sarà necessario eseguire:
+- g++ -o generatore generatore.cpp
+- ./generatore
+- g++ -o main main.cpp boid.cpp
+- ./main
+- python visualizer.py
+
+Preciso che ho deciso di aggiungere un parametro per me rilevante, ossia l'orientamento dei boid, per questo nel file di testo coordinates.txt verranno aggiornati i dati dei boid a gruppi di 3 valori (posizione lungo x, y e orientamento). Per una corretta visualizzazione dell'orientamento anche nel visualizer ho dovuto apportare qualche modifica alcodice python affinche potessimo visualizzare l'orientamento; 
+per questo motivo verranno graficati i boid con forme triangolari.
+Lascio nella cartella anche alcuni esempi di file CordinateIniziali.txt e coordinates prima parte.txt relative alla prima parte.
+
+Per quanto riguarda invece la seconda parte purtroppo non sono stato in grado di scrivere con successo il file thread.cpp. 
+Ho creato, come da consegna, tante thread quanti boid, affinchè ciascuna si occupasse del continuo aggiornamento del rispettivo boid. L'aggiornamento ovviamente prevede il continuo confronto con i boid vicini, all'interno del neighborhoodVisible range, che poi determinano una variazione di velocità e posizione del boid che, per le regole imposte, deve adattarsi ai boid vicini.
+Ho creato, inoltre, una thread che si occupasse di salvare le posizioni dei boid ogni tot di tempo. Ho gestito quest'azione con uno sleep_for affinche la thread di salvataggio ogniqualvolta si fosse svegliata avrebbe preso il lock arrestando le BoidThread e "scattando" uno screen della situazione momentanea dei boid. La threaddi salvataggio dovrebbe quindi avere la precedenza su quelle associate ai boid. Una volta che ha completato il salvataggio poi le BoidThread avrebbero ripreso il loro compito in attesa del nuovo risveglio dell'altra thread. 
+
+Purtroppo non sono stato in grado di implementare questo mio ragionamento in un codice corretto e funzionante. Lascio comunque nella cartella il codice che ho provato a sviluppare.
+
+
+ 
